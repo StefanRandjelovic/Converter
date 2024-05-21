@@ -1,0 +1,35 @@
+#unitChooserContainer {
+  position: relative;
+
+  .unitDisplay {
+    display: flex;
+  }
+  #unitChooserModal {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+
+    ul {
+      list-style: none;
+      li {
+        width: auto;
+        padding: 2.5px;
+        &:hover {
+          cursor: pointer;
+          background-color: red;
+        }
+      }
+    }
+  }
+
+  #unitChooserModal.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  #unitChooserModal.shown {
+    opacity: 1;
+    visibility: visible;
+    background-color: white;
+  }
+}
