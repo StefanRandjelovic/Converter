@@ -2,20 +2,24 @@
 import { useEffect, useRef, useState } from "react";
 // COMPONENTS
 import UnitChooser from "@components/UnitChooser";
+import InputField from "@components/InputField";
+import Title from "@components/Title";
 // INFO
 import { unitsWeight } from "@info/infoArray";
 // FUNCTIONS
 import { handleWeightCalculation } from "@functions/functions";
+// STYLE
+import "@style/weightConvert.scss";
 
 const WeightConvert = () => {
   const [weight, setWeight] = useState(0);
-  const [message, setMessage] = useState("Enter a number.");
+  const [message, setMessage] = useState("Enter a number");
   const [showModal, setShowModal] = useState(false);
   const [unit, setUnit] = useState("");
   const [showModal2, setShowModal2] = useState(false);
   const [unit2, setUnit2] = useState("");
 
-  console.log(unit);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     handleWeightCalculation(
@@ -27,10 +31,9 @@ const WeightConvert = () => {
     );
   }, [unit2, unit]);
 
-  const inputRef = useRef(null);
-
   return (
     <main>
+      <Title cls="title" title="Weight Converter" />
       <UnitChooser
         modal={showModal}
         showModal={setShowModal}
@@ -38,16 +41,15 @@ const WeightConvert = () => {
         setUnit={setUnit}
         chosenUnit={unit}
       />
-      <input
+      <InputField
+        cls="input"
         ref={inputRef}
-        disabled={unit ? false : true}
-        type="text"
-        maxLength={15}
-        onChange={(event) =>
+        unit={unit}
+        func={(event) =>
           handleWeightCalculation(event, setMessage, setWeight, unit, unit2)
         }
       />
-      <p>{message ? message : "Enter a number"}</p>
+      <p id="message">{message}</p>
       <UnitChooser
         modal={showModal2}
         showModal={setShowModal2}
@@ -55,7 +57,12 @@ const WeightConvert = () => {
         setUnit={setUnit2}
         chosenUnit={unit2}
       />
-      <input type="text" disabled={unit2 ? false : true} value={weight} />
+      <input
+        className="output"
+        type="text"
+        disabled={unit2 ? false : true}
+        value={weight}
+      />
     </main>
   );
 };
