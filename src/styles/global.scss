@@ -3,6 +3,24 @@
   margin: 0;
   box-sizing: border-box;
 }
-body{
-    padding: 20px;
+
+body {
+  background-image: url("@images/Converter.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body,
+#root,
+main {
+  padding: 20px;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
