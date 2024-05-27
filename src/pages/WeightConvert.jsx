@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import UnitChooser from "@components/UnitChooser";
 import InputField from "@components/InputField";
 import Title from "@components/Title";
+import Header from "@components/Header";
 // INFO
 import { unitsWeight } from "@info/infoArray";
 // FUNCTIONS
@@ -31,8 +32,35 @@ const WeightConvert = () => {
     );
   }, [unit2, unit]);
 
+  useEffect(() => {
+    document.documentElement.addEventListener("keydown", (event) => {
+      if (event.key === "ESCAPE") {
+        setShowModal(false);
+        setShowModal2(false);
+      }
+    });
+    document.documentElement.addEventListener("click", () => {
+      setShowModal(false);
+      setShowModal2(false);
+    });
+
+    return () => {
+      document.documentElement.addEventListener("keydown", (event) => {
+        if (event.key === "ESCAPE") {
+          setShowModal(false);
+          setShowModal2(false);
+        }
+      });
+      document.documentElement.removeEventListener("click", () => {
+        setShowModal(false);
+        setShowModal2(false);
+      });
+    };
+  }, []);
+
   return (
     <main>
+      <Header />
       <Title cls="title" title="Weight Converter" />
       <UnitChooser
         modal={showModal}
@@ -45,9 +73,9 @@ const WeightConvert = () => {
         cls="input"
         ref={inputRef}
         unit={unit}
-        func={(event) =>
-          handleWeightCalculation(event, setMessage, setWeight, unit, unit2)
-        }
+        func={(event) => {
+          handleWeightCalculation(event, setMessage, setWeight, unit, unit2);
+        }}
       />
       <p id="message">{message}</p>
       <UnitChooser
@@ -61,7 +89,7 @@ const WeightConvert = () => {
         className="output"
         type="text"
         disabled={unit2 ? false : true}
-        value={weight}
+        value={weight ? `${weight.toLocaleString()}${unit2}` : 0}
       />
     </main>
   );
