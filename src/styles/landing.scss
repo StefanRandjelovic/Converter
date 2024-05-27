@@ -1,0 +1,20 @@
+#welcomeTitle {
+  animation-name: welcome;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
+@keyframes welcome {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    transform: translateX(-10000px);
+  }
+}
