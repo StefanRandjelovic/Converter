@@ -8,7 +8,16 @@
     align-items: center;
     margin-bottom: 10px;
 
+    p {
+      text-align: center;
+      background-color: white;
+      border-radius: 10px;
+      padding: 0 5px;
+    }
+
     img {
+      background-color: white;
+      border-radius: 10px;
       width: 15px;
       transition: transform 0.15s ease;
       &:hover {
@@ -19,7 +28,7 @@
   }
   #unitChooserModal {
     position: absolute;
-    top: 70%;
+    top: 55%;
     width: 100%;
     z-index: 10;
     border: 1px solid black;
