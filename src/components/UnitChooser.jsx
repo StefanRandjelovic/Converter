@@ -1,4 +1,6 @@
+// IMAGES
 import Chevron from "@images/chevron.svg";
+// STYLES
 import "@style/unitChooser.scss";
 
 const UnitChooser = ({ modal, showModal, unit, setUnit, chosenUnit }) => {
@@ -6,7 +8,14 @@ const UnitChooser = ({ modal, showModal, unit, setUnit, chosenUnit }) => {
     <div id="unitChooserContainer">
       <div className="unitDisplay">
         <p>Chose a unit</p>
-        <img src={Chevron} alt="select" onClick={() => showModal(!modal)} />
+        <img
+          src={Chevron}
+          alt="select"
+          onClick={(event) => {
+            event.stopPropagation();
+            showModal(!modal);
+          }}
+        />
         <p>Chosen unit: {chosenUnit}</p>
       </div>
       <div id="unitChooserModal" className={modal ? "shown" : "hidden"}>
