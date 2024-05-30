@@ -1,0 +1,36 @@
+table {
+  border-radius: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-collapse: collapse;
+
+  #conc {
+    width: 20%;
+  }
+  tr {
+    td:first-child {
+      text-align: center;
+    }
+    td:nth-child(even) {
+      background-color: lightblue;
+    }
+    th,
+    td {
+      padding: 5px 10px;
+      border: 1px solid black;
+    }
+  }
+
+  tr:not(.info) {
+    th,
+    td:not(td:first-child) {
+      &:hover {
+        cursor: pointer;
+        color: white;
+      }
+    }
+    &:hover td {
+      background-color: blue;
+    }
+  }
+}
