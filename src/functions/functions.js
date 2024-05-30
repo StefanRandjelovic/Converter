@@ -162,3 +162,26 @@ export const handleWeightCalculation = (
     setWeight(event.target.value);
   }
 };
+
+export const handlePesticideAmount = (water, pesticide, message, amount) => {
+  if (isNaN(water) || isNaN(pesticide)) {
+    message("Enter real values");
+    amount(0);
+    return;
+  } else if (!water && !pesticide) {
+    message("Enter water amount and pesticide concentration");
+    amount(0);
+    return;
+  } else if (!water) {
+    message("Enter water amount");
+    amount(0);
+    return;
+  } else if (!pesticide) {
+    message("Enter pesticide concentration");
+    amount(0);
+    return;
+  }
+  const amounT = water * pesticide * 10;
+  amount(amounT);
+  message("");
+};
