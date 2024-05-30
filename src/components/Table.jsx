@@ -4,6 +4,7 @@ import "@style/table.scss";
 const Table = () => {
   return (
     <table>
+      <caption>Table of reference</caption>
       <tbody>
         <tr className="info">
           <th colSpan={"10"}>Amount of water for spraying in liters</th>
