@@ -18,6 +18,7 @@ const Landing = () => {
           <Title title="Converter app" cls="landing" />
           <p>Please choose from one of these converters.</p>
           <Link to={"/weightConvert"}>Weight converter</Link>
+          <Link to={"/waterNeeds"}>How much pesticide do I need?</Link>
         </>
       )}
     </main>
