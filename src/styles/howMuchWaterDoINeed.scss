@@ -1,0 +1,24 @@
+main {
+  gap: 15px;
+  #pestSec {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    #overlay {
+      display: flex;
+      gap: 10px;
+      justify-content: space-around;
+
+      .part {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 30%;
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
