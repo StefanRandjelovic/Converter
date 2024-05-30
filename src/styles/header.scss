@@ -1,0 +1,14 @@
+header {
+  img {
+    transform: rotate(90deg);
+    &:hover {
+        cursor: pointer;
+      transform: rotate(90deg) scale(1.05);
+    }
+  }
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: fixed;
+  top: 0;
+}
