@@ -4,6 +4,12 @@ table {
   border: 1px solid black;
   border-collapse: collapse;
 
+  caption {
+    font-size: xx-large;
+    background-color: lightblue;
+    border-radius: 10px 10px 0 0;
+  }
+
   #conc {
     width: 20%;
   }
