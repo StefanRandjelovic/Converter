@@ -1,14 +1,17 @@
 // DEV DEPENDENCY
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 // COMPONENTS
 import Table from "@components/Table";
+import Header from "@components/Header";
+import Title from "@components/Title";
 import InputField from "@components/InputField";
 // FUNCTIONS
 import { handlePesticideAmount } from "@functions/functions";
+// STYLE
+import "@style/weightConvert.scss";
+import "@style/howMuchWaterDoINeed.scss";
 
 const WaterNeeds = () => {
-  const [waterAmount, setWaterAmount] = useState(0);
-  const [pesticideAmount, setPesticideAmount] = useState(0);
   const [message, setMessage] = useState("");
   const [amount, setAmount] = useState(0);
 
@@ -17,48 +20,51 @@ const WaterNeeds = () => {
 
   return (
     <main>
+      <Header />
       <Table />
-      <p>Choose the amount of water in liters</p>
-      <InputField
-        unit={true}
-        func={(event) => {
-          setWaterAmount(event.target.value);
-          handlePesticideAmount(
-            inputRefWater.current.value,
-            inputRefPesticide.current.value,
-            setMessage,
-            setAmount
-          );
-        }}
-        cls="mida"
-        ref={inputRefWater}
-      />
-      <p>
-        {waterAmount != 0 && waterAmount}{" "}
-        {waterAmount != 0 && (waterAmount < 2 ? "liter" : "liters")}
-      </p>
-      <p>Choose the pesticide concentration in %</p>
-      <InputField
-        unit={true}
-        func={(event) => {
-          setPesticideAmount(event.target.value);
-          handlePesticideAmount(
-            inputRefWater.current.value,
-            inputRefPesticide.current.value,
-            setMessage,
-            setAmount
-          );
-        }}
-        cls="mida"
-        ref={inputRefPesticide}
-      />
-      <p>
-        {" "}
-        {pesticideAmount !== 0 && pesticideAmount}{" "}
-        {pesticideAmount !== 0 && "%"}
-      </p>
-      <p>{message}</p>
-      <p>{amount != 0 && amount + " " + "ml/g"}</p>
+      <section id="pestSec">
+        <Title title="Amount of pesticide needed calculator" />
+        <div id="overlay">
+          <div className="part">
+            <p>Choose the amount of water in liters</p>
+            <InputField
+              unit={true}
+              func={() =>
+                handlePesticideAmount(
+                  inputRefWater.current.value,
+                  inputRefPesticide.current.value,
+                  setMessage,
+                  setAmount
+                )
+              }
+              cls="input"
+              ref={inputRefWater}
+            />
+          </div>
+          <div className="part">
+            <p>Choose the pesticide concentration in %</p>
+            <InputField
+              unit={true}
+              func={() =>
+                handlePesticideAmount(
+                  inputRefWater.current.value,
+                  inputRefPesticide.current.value,
+                  setMessage,
+                  setAmount
+                )
+              }
+              cls="input"
+              ref={inputRefPesticide}
+            />
+          </div>
+          <div className="part">
+            <p>{message}</p>
+            <p>
+              {amount != 0 && `You will need to use this much: ${amount} ml/g`}
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };
